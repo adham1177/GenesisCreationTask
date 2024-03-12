@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6859076923754714203}
   - component: {fileID: 2636670884150606183}
   - component: {fileID: 2607943287146458964}
-  - component: {fileID: 2308331152402114880}
+  - component: {fileID: 4596597118896039604}
   m_Layer: 5
   m_Name: ShopkeeperView
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2308331152402114880
+--- !u!114 &4596597118896039604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,10 +87,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3752351570713070700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d9102116dc2c17489477bc99fce9acc, type: 3}
+  m_Script: {fileID: 11500000, guid: f080a900291217a439f81f8a8da325df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopkeeperView: {fileID: 1538015665339316855}
+  inventoryView: {fileID: 1538015665339316855}
+  shopkeepers:
+  - items:
+    - name: Item1
+      sprite: {fileID: 0}
+      buyPrice: 100
+      sellPrice: 90
+    - name: item2
+      sprite: {fileID: 0}
+      buyPrice: 30
+      sellPrice: 20
+    - name: item3
+      sprite: {fileID: 0}
+      buyPrice: 80
+      sellPrice: 100
+    - name: item4
+      sprite: {fileID: 0}
+      buyPrice: 1000
+      sellPrice: 50
 --- !u!1 &3992369716270918230
 GameObject:
   m_ObjectHideFlags: 0

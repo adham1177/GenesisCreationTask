@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,8 +10,8 @@ public class HUD : MonoBehaviour
       PlayerController.CoinsUpdated += OnCoinsUpdated;
    }
 
-   private void OnCoinsUpdated(int newBalance)
+   private void OnCoinsUpdated(float newBalance)
    {
-      coins.text = newBalance.ToString();
+      coins.text = newBalance.ToString("F1");
    }
 }

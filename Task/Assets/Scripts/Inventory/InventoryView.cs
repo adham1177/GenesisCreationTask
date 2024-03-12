@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopkeeperView : MonoBehaviour
+public class InventoryView : MonoBehaviour
 {
     [SerializeField] private ItemView itemPrefab;
-
-    public event Action<Item> TryBuyItem;
+    [SerializeField] private Transform content;
 
     private readonly List<ItemView> _itemViews = new();
-    public void UpdateShopkeeperView(List<Item> items)
+    public void UpdateInventoryView(List<Item> items, EItemOperation itemOperation, Action<Item> operationAction)
     {
         var index = 0;
         for (; index < items.Count; index++)
@@ -18,13 +17,13 @@ public class ShopkeeperView : MonoBehaviour
             var item = items[index];
             if (_itemViews.Count > index)
             {
-                _itemViews[index].Init(item, ButtonAction);
+                _itemViews[index].Init(item, operationAction, itemOperation);
                 _itemViews[index].gameObject.SetActive(true);
             }
             else
             {
-                var itemView = Instantiate(itemPrefab, transform);
-                itemView.Init(item, ButtonAction);
+                var itemView = Instantiate(itemPrefab, content);
+                itemView.Init(item, operationAction, itemOperation);
                 _itemViews.Add(itemView);
             }
         }
@@ -34,9 +33,5 @@ public class ShopkeeperView : MonoBehaviour
             _itemViews[i].gameObject.SetActive(false);
         }
     }
-
-    private void ButtonAction(Item item)
-    {
-        TryBuyItem?.Invoke(item);
-    }
+    
 }
