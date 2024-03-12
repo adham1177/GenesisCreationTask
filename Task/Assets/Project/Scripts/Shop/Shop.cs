@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,10 +53,12 @@ public class Shop : MonoBehaviour
         playerInventoryView.UpdateInventoryView(_playerCachedInventory, EItemOperation.Sell, SellItem);
         shopPanel.gameObject.SetActive(true);
         backgroundDim.gameObject.SetActive(true);
+        shopPanel.transform.DOScale(Vector3.one, 0.3f).From(Vector3.zero).SetEase(Ease.OutBack);
     }
 
-    private void CloseShopInventory()
+    private async void CloseShopInventory()
     {
+        await shopPanel.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).AsyncWaitForCompletion();
         shopPanel.gameObject.SetActive(false);
         backgroundDim.gameObject.SetActive(false);
     }

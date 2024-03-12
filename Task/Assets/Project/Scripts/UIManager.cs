@@ -6,7 +6,6 @@ public class UIManager : MonoBehaviour
 {
     [Header("Controllers")]
     [SerializeField] private Shop shop;
-    [SerializeField] private BedController bedController;
     [SerializeField] private AtmController atmController;
 
     [Header("Buttons")] 

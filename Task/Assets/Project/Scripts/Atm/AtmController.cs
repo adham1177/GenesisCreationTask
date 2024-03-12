@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -118,10 +119,12 @@ public class AtmController : MonoBehaviour
     {
         atmPanel.SetActive(true);
         backgroundDim.SetActive(true);
+        atmPanel.transform.DOScale(Vector3.one, 0.3f).From(Vector3.zero).SetEase(Ease.OutBack);
     }
 
-    public void CloseAtmPanel()
+    public async void CloseAtmPanel()
     {
+        await atmPanel.transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).AsyncWaitForCompletion();
         atmPanel.SetActive(false);
         backgroundDim.SetActive(false);
     }
