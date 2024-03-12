@@ -19,7 +19,7 @@ public class Shop : MonoBehaviour
 
 
     private int _selectedIndex;
-
+    private List<Item> _playerCachedInventory = new();
     public static Func<Item, bool> TryBuyItem;
     public static Func<Item, bool> TrySellItem;
 
@@ -40,7 +40,8 @@ public class Shop : MonoBehaviour
 
     private void OnPlayerInventoryUpdated(List<Item> items)
     {
-        playerInventoryView.UpdateInventoryView(items, EItemOperation.Sell, SellItem);
+        _playerCachedInventory = items;
+        playerInventoryView.UpdateInventoryView(_playerCachedInventory, EItemOperation.Sell, SellItem);
     }
 
     public void OpenShopInventory(int shopKeeperIndex)
@@ -48,6 +49,7 @@ public class Shop : MonoBehaviour
         _selectedIndex = shopKeeperIndex;
         shopkeeperName.text = shopkeepers[_selectedIndex].Name;
         shopkeeperInventoryView.UpdateInventoryView(shopkeepers[_selectedIndex].Items, EItemOperation.Buy, BuyItem);
+        playerInventoryView.UpdateInventoryView(_playerCachedInventory, EItemOperation.Sell, SellItem);
         shopPanel.gameObject.SetActive(true);
         backgroundDim.gameObject.SetActive(true);
     }
