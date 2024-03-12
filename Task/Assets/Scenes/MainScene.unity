@@ -4670,6 +4670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupText: {fileID: 1523746677}
   popupWindow: {fileID: 927150503}
+  animationDuration: 0.5
 --- !u!1 &1587382017
 GameObject:
   m_ObjectHideFlags: 0
